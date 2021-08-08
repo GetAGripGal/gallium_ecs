@@ -11,5 +11,5 @@ serde = "*"
 typetag = "*"
 ron = "*"
 
-gallium_ecs = {path = "crates/gallium_ecs"}
-gallium_ecs_derive = {path = "crates/gallium_ecs_derive"}
+gallium_ecs = {path = "crates/gallium_ecs", version = "0.1.0"}
+gallium_ecs_derive = {path = "crates/gallium_ecs_derive", version = "0.1.0"}
