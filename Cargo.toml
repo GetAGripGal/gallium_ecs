@@ -2,6 +2,8 @@
 name = "gallium"
 version = "0.1.0"
 edition = "2018"
+description = "A simple entity-component-system crate for rust with serialization support"
+license = "GPL-3.0"
 
 [workspace]
 members = ["crates/*"]
