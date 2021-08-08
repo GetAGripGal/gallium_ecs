@@ -1,0 +1,15 @@
+[package]
+name = "gallium"
+version = "0.1.0"
+edition = "2018"
+
+[workspace]
+members = ["crates/*"]
+
+[dependencies]
+serde = "*"
+typetag = "*"
+ron = "*"
+
+gallium_ecs = {path = "crates/gallium_ecs"}
+gallium_ecs_derive = {path = "crates/gallium_ecs_derive"}

@@ -1,0 +1,12 @@
+[package]
+name = "gallium_ecs"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1.0.127"
+ron = "0.6.4"
+typetag = "0.1"
+gallium_ecs_derive = {path = "../gallium_ecs_derive"}
