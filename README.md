@@ -5,7 +5,7 @@ A simple entity-component-system crate for rust with serialization support
 You can include the library using carge:
 ```toml
 [dependencies]
-gallium_ecs = version = "0.1.0"
+gallium_ecs = "0.1.0"
 gallium_ecs_derive = "0.1.0"
 ```
 
