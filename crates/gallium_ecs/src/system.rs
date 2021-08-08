@@ -6,5 +6,5 @@ pub trait System {
     /** Tick the system */
     fn tick(&self, _scene: &Scene) {}
     /** Handle game event */
-    fn on_event(&self, _tag: &str, _data: &mut dyn std::any::Any) {}
+    fn on_event(&self, _scene: &Scene, _tag: &str, _data: &dyn std::any::Any) {}
 }

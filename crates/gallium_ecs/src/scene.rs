@@ -84,6 +84,23 @@ impl Scene {
         self.systems = Some(systems);
     }
 
+    /** Dispatch a scene over the systems */
+    pub fn dispatch_event(&mut self, tag: &str, data: &dyn std::any::Any) {
+        // Take ownership of the systems
+        let systems = self.systems.take().unwrap();
+
+        // Loop over systems
+        for system_list in systems.iter() {
+            for system in system_list.1.iter() {
+                // Handle events in system
+                system.on_event(self, tag, data);
+            }
+        }
+
+        // Return ownership of systems
+        self.systems = Some(systems);
+    }
+
     /** Serialize the scene to a ron string */
     pub fn to_ron(&self) -> Result<String, Error> {
         return to_string_pretty(&self, PrettyConfig::default());

@@ -40,7 +40,7 @@ pub fn create_scene() {
 
     let entity2 = EntityBuilder::new()
         .with(NameComponent {
-        name: String::from("Bob")
+            name: String::from("Bob")
         })
         .build();
 
