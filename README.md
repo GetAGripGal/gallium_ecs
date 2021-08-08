@@ -92,6 +92,17 @@ let mut scene = SceneBuilder::new()
 // Tick all systems with the 'init' tag
 scene.tick_systems("init");
 ```
+you can also dispatch events over all the systems in the scene:
+```rust
+let mut scene = SceneBuilder::new()
+// Add a system to the scene
+.with_system("init", ExampleSystem {})
+.build();
+
+// Dispatch the event
+let example_data = ... // Any type can be dispatched as data
+scene.dispatch_event("example_event", &example_data); // The data has to be dispatched as a reference
+```
 
 #### Entities
 To fetch a specific entity, you need to use its id:
