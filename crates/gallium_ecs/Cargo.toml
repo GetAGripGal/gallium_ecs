@@ -9,4 +9,3 @@ edition = "2018"
 serde = "1.0.127"
 ron = "0.6.4"
 typetag = "0.1"
-gallium_ecs_derive = {path = "../gallium_ecs_derive"}

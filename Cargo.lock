@@ -48,7 +48,6 @@ dependencies = [
 name = "gallium_ecs"
 version = "0.1.0"
 dependencies = [
- "gallium_ecs_derive",
  "ron",
  "serde",
  "typetag",

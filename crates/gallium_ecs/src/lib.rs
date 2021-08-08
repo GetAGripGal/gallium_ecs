@@ -11,8 +11,6 @@ pub use entity::*;
 pub use scene::*;
 pub use system::*;
 
-pub use gallium_ecs_derive::*;
-
 // Publicly use serialization crates
 pub use ron::*;
 pub use serde::*;
