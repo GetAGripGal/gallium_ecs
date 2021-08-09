@@ -2,6 +2,12 @@
 A simple entity-component-system crate for rust with serialization support
 
 ## Usage
+You can include the library using carge:
+```toml
+[dependencies]
+gallium_ecs = "0.1.0"
+gallium_ecs_derive = "0.1.0"
+```
 
 ### Components
 Components are simple structs that can de defined using the `component` attribute.
