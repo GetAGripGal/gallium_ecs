@@ -35,7 +35,7 @@ dependencies = [
 
 [[package]]
 name = "gallium"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "gallium_ecs",
  "gallium_ecs_derive",
@@ -46,7 +46,7 @@ dependencies = [
 
 [[package]]
 name = "gallium_ecs"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "ron",
  "serde",
