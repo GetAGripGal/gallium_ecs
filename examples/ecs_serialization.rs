@@ -12,7 +12,7 @@ struct GreetSystem;
 
 #[gallium::system]
 impl System for GreetSystem {
-    fn tick(&self, scene: &Scene) {
+    fn tick(&self, scene: &mut Scene) {
         // Fetch the entities
         let entities = scene
         .get_entities()

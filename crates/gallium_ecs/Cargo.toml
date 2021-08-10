@@ -1,6 +1,6 @@
 [package]
 name = "gallium_ecs"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2018"
 description = "A simple entity-component-system crate for rust with serialization support"
 license = "GPL-3.0"
