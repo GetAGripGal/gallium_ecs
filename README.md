@@ -58,11 +58,11 @@ pub struct ExampleSystem
 
 #[gallium::system]
 impl System for ExampleSystem {
-  fn tick(&mut self, _scene: &Scene) {
+  fn tick(&mut self, _scene: &mut Scene) {
     // System tick code here
   }
   
-  fn on_event(&self, _scene: &Scene, _tag: &str, _data: &mut dyn std::any::Any) {
+  fn on_event(&self, _scene: &mut Scene, _tag: &str, _data: &mut dyn std::any::Any) {
     // Event handling here
   }
 }
