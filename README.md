@@ -5,7 +5,7 @@ A simple entity-component-system crate for rust with serialization support
 You can include the library using carge:
 ```toml
 [dependencies]
-gallium_ecs = "0.1.1"
+gallium_ecs = "0.1.2"
 gallium_ecs_derive = "0.1.0"
 ```
 
@@ -58,11 +58,11 @@ pub struct ExampleSystem
 
 #[gallium::system]
 impl System for ExampleSystem {
-  fn tick(&mut self, _scene: &Scene) {
+  fn tick(&mut self, _scene: &mut Scene) {
     // System tick code here
   }
   
-  fn on_event(&self, _scene: &Scene, _tag: &str, _data: &mut dyn std::any::Any) {
+  fn on_event(&self, _scene: &mut Scene, _tag: &str, _data: &mut dyn std::any::Any) {
     // Event handling here
   }
 }
