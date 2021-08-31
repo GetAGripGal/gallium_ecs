@@ -58,11 +58,11 @@ pub struct ExampleSystem
 
 #[gallium::system]
 impl System for ExampleSystem {
-  fn tick(&mut self, _scene: &mut Scene) {
+  fn tick(&mut self, _scene: &mut Scene, _world: &mut World) {
     // System tick code here
   }
   
-  fn on_event(&self, _scene: &mut Scene, _tag: &str, _data: &mut dyn std::any::Any) {
+  fn on_event(&self, _scene: &mut Scene, _world: &mut World, _tag: &str, _data: &mut dyn std::any::Any) {
     // Event handling here
   }
 }
@@ -122,6 +122,23 @@ To fetch a list of entity with specific components, you can get all the entities
 let entities = scene.get_entities()
 .are_active() // Make sure to only fetch active components
 .with_component::<ExampleComponent>(); // Only fetch entities with specified components
+```
+
+### Worlds
+If you have multiple scenes in your game the better way of managing them is using worlds.
+```rust
+// Create the world
+let mut world = World::new();
+
+// Set the scene to the first scene
+world.set_scene(Scene::import_ron("scene_1.ron").unwrap());
+// Tick the systems in the first scene
+world.tick_systems("test");
+
+// Set the scene to the second scene
+world.set_scene(Scene::import_ron("scene_2.ron").unwrap());
+// Tick the systems in the second scene
+world.tick_systems("test");
 ```
 
 ### Serialization
