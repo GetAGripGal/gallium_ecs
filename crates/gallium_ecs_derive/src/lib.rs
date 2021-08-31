@@ -8,6 +8,11 @@ pub fn component(
 ) -> proc_macro::TokenStream {
     // Get the name
     let p_input = input.to_string();
+    let p_input = p_input
+    .replace("(", " ")
+    .replace(")", " ")
+    .replace("{", " ")
+    .replace("}", " ");
     let p_input = p_input.split(' ').collect::<Vec<&str>>();
 
     let name_index = p_input

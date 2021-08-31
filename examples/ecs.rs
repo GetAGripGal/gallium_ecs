@@ -13,13 +13,13 @@ struct GreetSystem;
 #[gallium::system]
 impl System for GreetSystem {
     /** Gets run each time the system is ticked */
-    fn tick(&self, scene: &mut Scene) {
+    fn tick(&self, scene: &mut Scene, _world: &mut World) {
         // Fetch the entities
         let entities = scene
-        .get_entities()
-        .are_active()
-        .with_component::<NameComponent>();
-        
+            .get_entities()
+            .are_active()
+            .with_component::<NameComponent>();
+
         // Loop over the entities
         for entity in entities.iter() {
             // Fetch the name component
@@ -41,7 +41,7 @@ pub fn create_scene() -> Scene {
 
     let entity2 = EntityBuilder::new()
         .with(NameComponent {
-        name: String::from("Bob")
+            name: String::from("Bob"),
         })
         .build();
 
@@ -56,9 +56,15 @@ pub fn create_scene() -> Scene {
 }
 
 fn main() {
+    // Create the world
+    let mut world = World::new();
+
     // Create the scene
-    let mut scene = create_scene();
+    let scene = create_scene();
+
+    // Add scene to the world
+    world.set_scene(scene);
 
     // Tick the scenes init systems
-    scene.tick_systems("init");
+    world.tick_systems("init");
 }

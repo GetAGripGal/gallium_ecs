@@ -68,6 +68,11 @@ impl Entity {
         };
     }
 
+    /** Get the entity id */
+    pub fn id(&self) -> usize {
+        return self.id;
+    }
+
     /** Check if the entity has a component */
     pub fn has_component<T: 'static + Component>(&self) -> bool {
         let name = &String::from(std::any::type_name::<T>());

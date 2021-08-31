@@ -12,12 +12,12 @@ struct GreetSystem;
 
 #[gallium::system]
 impl System for GreetSystem {
-    fn tick(&self, scene: &mut Scene) {
+    fn tick(&self, scene: &mut Scene, _world: &mut World) {
         // Fetch the entities
         let entities = scene
-        .get_entities()
-        .are_active()
-        .with_component::<NameComponent>();
+            .get_entities()
+            .are_active()
+            .with_component::<NameComponent>();
 
         // Loop over the entities
         for entity in entities.iter() {
@@ -40,7 +40,7 @@ pub fn create_scene() {
 
     let entity2 = EntityBuilder::new()
         .with(NameComponent {
-            name: String::from("Bob")
+            name: String::from("Bob"),
         })
         .build();
 
@@ -52,22 +52,21 @@ pub fn create_scene() {
         .build();
 
     // Serialize the scene
-    s_scene
-        .export_ron(
-            "examples/test_scene.ron",
-        )
-        .unwrap();
+    s_scene.export_ron("examples/test_scene.ron").unwrap();
 }
 
 fn main() {
+    // Create the world
+    let mut world = World::new();
+
     // Create the scene
     create_scene();
     // Import the scene
-    let mut scene = Scene::import_ron(
-        "examples/test_scene.ron",
-    )
-    .unwrap();
+    let scene = Scene::import_ron("examples/test_scene.ron").unwrap();
+
+    // Add scene to the world
+    world.set_scene(scene);
 
     // Tick the scenes init systems
-    scene.tick_systems("init");
+    world.tick_systems("init");
 }

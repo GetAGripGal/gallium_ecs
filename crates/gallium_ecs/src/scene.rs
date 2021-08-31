@@ -5,7 +5,7 @@ use std::{
     io::Write,
 };
 
-use crate::{Component, Entity, System};
+use crate::{Component, Entity, System, World};
 use ron::{
     de::from_reader,
     from_str,
@@ -65,7 +65,7 @@ impl Scene {
     }
 
     /** Tick the systems with specified tag in the scene */
-    pub fn tick_systems(&mut self, tag: &str) {
+    pub fn tick_systems(&mut self, tag: &str, world: &mut World) {
         // Take ownership of the systems
         let mut systems = self.systems.take().unwrap();
 
@@ -77,7 +77,7 @@ impl Scene {
 
         // Loop over systems
         for system in systems.get_mut(tag).unwrap().iter_mut() {
-            system.tick(self);
+            system.tick(self, world);
         }
 
         // Return ownership of systems
@@ -85,7 +85,7 @@ impl Scene {
     }
 
     /** Dispatch a scene over the systems */
-    pub fn dispatch_event(&mut self, tag: &str, data: &dyn std::any::Any) {
+    pub fn dispatch_event(&mut self, tag: &str, world: &mut World, data: &dyn std::any::Any) {
         // Take ownership of the systems
         let systems = self.systems.take().unwrap();
 
@@ -93,7 +93,7 @@ impl Scene {
         for system_list in systems.iter() {
             for system in system_list.1.iter() {
                 // Handle events in system
-                system.on_event(self, tag, data);
+                system.on_event(self, world, tag, data);
             }
         }
 
